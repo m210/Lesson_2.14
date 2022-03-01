@@ -23,6 +23,9 @@ public class StringArrayList implements StringList {
 
     @Override
     public String add(String item) {
+        if(item == null)
+            throw new NullPointerException("Item shouldn't be NULL");
+
         if(size >= array.length - 1) {
             extend();
         }
@@ -41,6 +44,9 @@ public class StringArrayList implements StringList {
 
     @Override
     public String add(int index, String item) {
+        if(item == null)
+            throw new NullPointerException("Item shouldn't be NULL");
+
         if(index < 0 || index > size) {
             throw new ArrayIndexOutOfBoundsException(index + " out of bounds " + size);
         }
@@ -66,6 +72,9 @@ public class StringArrayList implements StringList {
 
     @Override
     public String set(int index, String item) {
+        if(item == null)
+            throw new NullPointerException("Item shouldn't be NULL");
+
         if(index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException(index + " out of bounds " + size);
         }
@@ -81,6 +90,9 @@ public class StringArrayList implements StringList {
 
     @Override
     public String remove(String item) {
+        if(item == null)
+            throw new NullPointerException("Item shouldn't be NULL");
+
         int index = indexOf(item);
         if(index == -1)
             throw new RuntimeException("item " + item + "is not found");
@@ -119,6 +131,9 @@ public class StringArrayList implements StringList {
 
     @Override
     public int indexOf(String item) {
+        if(item == null)
+            throw new NullPointerException("Item shouldn't be NULL");
+
         for(int i = 0; i < size; i++) {
             if(array[i].equals(item)) {
                 return i;
@@ -134,6 +149,9 @@ public class StringArrayList implements StringList {
 
     @Override
     public int lastIndexOf(String item) {
+        if(item == null)
+            throw new NullPointerException("Item shouldn't be NULL");
+
         for(int i = size - 1; i >= 0; i--) {
             if(array[i].equals(item)) {
                 return i;
@@ -164,7 +182,7 @@ public class StringArrayList implements StringList {
     @Override
     public boolean equals(StringList otherList) {
         if(otherList == null)
-            throw new NullPointerException(otherList + "shouldn't be NULL");
+            throw new NullPointerException("List shouldn't be NULL");
 
         if(this == otherList)
             return true;
